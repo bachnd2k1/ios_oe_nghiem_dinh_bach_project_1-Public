@@ -17,5 +17,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard scene as? UIWindowScene != nil else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.backgroundColor = .white
+        window?.rootViewController = TabBarController()
+        window?.makeKeyAndVisible()
     }
 }
