@@ -23,7 +23,10 @@
 		5269F1582AB2A6DD003FEAE3 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1572AB2A6DD003FEAE3 /* FavouriteViewController.swift */; };
 		5269F15A2AB2A724003FEAE3 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1592AB2A724003FEAE3 /* DownloadViewController.swift */; };
 		5269F15C2AB2D97E003FEAE3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F15B2AB2D97E003FEAE3 /* TabBarController.swift */; };
-		5269F1A92AB2EA30003FEAE3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1A82AB2EA30003FEAE3 /* Constant.swift */; };
+		5269F1AB2AB2F6F1003FEAE3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1AA2AB2F6F1003FEAE3 /* Constant.swift */; };
+		5269F1AD2AB2F7C0003FEAE3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1AC2AB2F7C0003FEAE3 /* EndPoint.swift */; };
+		5269F1AF2AB2F7D6003FEAE3 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1AE2AB2F7D6003FEAE3 /* Key.swift */; };
+		5269F1B72AB2F939003FEAE3 /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269F1B62AB2F939003FEAE3 /* ApiCaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +67,10 @@
 		5269F1572AB2A6DD003FEAE3 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		5269F1592AB2A724003FEAE3 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		5269F15B2AB2D97E003FEAE3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		5269F1A82AB2EA30003FEAE3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5269F1AA2AB2F6F1003FEAE3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5269F1AC2AB2F7C0003FEAE3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		5269F1AE2AB2F7D6003FEAE3 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		5269F1B62AB2F939003FEAE3 /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52650EFC2AB7EB1C00402501 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				5269F1B62AB2F939003FEAE3 /* ApiCaller.swift */,
+				5269F1AA2AB2F6F1003FEAE3 /* Constant.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5269F10F2AB1BCA4003FEAE3 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +114,7 @@
 				5269F1312AB1BCA7003FEAE3 /* MovieAppTests */,
 				5269F13B2AB1BCA7003FEAE3 /* MovieAppUITests */,
 				5269F1192AB1BCA4003FEAE3 /* Products */,
+				52650EFC2AB7EB1C00402501 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +139,6 @@
 				5269F1242AB1BCA7003FEAE3 /* Assets.xcassets */,
 				5269F1262AB1BCA7003FEAE3 /* LaunchScreen.storyboard */,
 				5269F1292AB1BCA7003FEAE3 /* Info.plist */,
-				5269F1A82AB2EA30003FEAE3 /* Constant.swift */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -150,6 +165,8 @@
 			children = (
 				5269F14F2AB2A61F003FEAE3 /* Movie.swift */,
 				5269F1512AB2A632003FEAE3 /* Youtube.swift */,
+				5269F1AC2AB2F7C0003FEAE3 /* EndPoint.swift */,
+				5269F1AE2AB2F7D6003FEAE3 /* Key.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +352,15 @@
 				5269F15A2AB2A724003FEAE3 /* DownloadViewController.swift in Sources */,
 				5269F1582AB2A6DD003FEAE3 /* FavouriteViewController.swift in Sources */,
 				5269F1522AB2A632003FEAE3 /* Youtube.swift in Sources */,
-				5269F1A92AB2EA30003FEAE3 /* Constant.swift in Sources */,
+				5269F1AF2AB2F7D6003FEAE3 /* Key.swift in Sources */,
+				5269F15C2AB2D97E003FEAE3 /* TabBarController.swift in Sources */,
+				5269F11C2AB1BCA4003FEAE3 /* AppDelegate.swift in Sources */,
+				5269F15A2AB2A724003FEAE3 /* DownloadViewController.swift in Sources */,
+				5269F1AD2AB2F7C0003FEAE3 /* EndPoint.swift in Sources */,
+				5269F1582AB2A6DD003FEAE3 /* FavouriteViewController.swift in Sources */,
+				5269F1522AB2A632003FEAE3 /* Youtube.swift in Sources */,
+				5269F1B72AB2F939003FEAE3 /* ApiCaller.swift in Sources */,
+				5269F1AB2AB2F6F1003FEAE3 /* Constant.swift in Sources */,
 				5269F1502AB2A61F003FEAE3 /* Movie.swift in Sources */,
 				5269F11E2AB1BCA4003FEAE3 /* SceneDelegate.swift in Sources */,
 			);

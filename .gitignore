@@ -70,6 +70,9 @@ Carthage/Build/
 Dependencies/
 .accio/
 
+# API key
+MovieApp/MovieApp/Model/Key.swift
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo.
@@ -88,3 +91,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
