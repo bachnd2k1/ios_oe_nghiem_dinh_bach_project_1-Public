@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Movie: Codable {
     let adult: Bool?
     let backdropPath: String?

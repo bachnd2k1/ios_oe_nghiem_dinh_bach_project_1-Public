@@ -9,4 +9,5 @@ import Foundation
 
 struct EndPoint {
     static let baseURL = "https://api.themoviedb.org"
+    static let baseURLImage = "https://image.tmdb.org/t/p/w500"
 }
