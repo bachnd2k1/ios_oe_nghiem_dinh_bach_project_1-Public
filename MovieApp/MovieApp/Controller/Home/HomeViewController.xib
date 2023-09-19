@@ -24,18 +24,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="nT7-EM-sKm">
-                    <rect key="frame" x="-15" y="44" width="444" height="500"/>
+                    <rect key="frame" x="-15" y="44" width="444" height="530"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="500" id="F6P-fg-ffG"/>
+                        <constraint firstAttribute="height" constant="530" id="F6P-fg-ffG"/>
                     </constraints>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cmK-PE-KO4">
-                    <rect key="frame" x="0.0" y="619" width="414" height="243"/>
+                    <rect key="frame" x="0.0" y="649" width="414" height="213"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="x9q-bZ-kU9">
-                    <rect key="frame" x="77" y="549" width="260" height="55"/>
+                    <rect key="frame" x="77" y="579" width="260" height="55"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5e-5j-hLG">
                             <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
