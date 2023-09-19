@@ -26,7 +26,7 @@ final class TabBarController: UITabBarController {
         upComingVC.title =  Constant.Title.UPCOMING
         searchVC.title = Constant.Title.SEARCH
         downloadVC.title = Constant.Title.DOWNLOAD
-        tabBar.tintColor = .label
+        tabBar.barTintColor = .black
         setViewControllers([homeVC, upComingVC, searchVC, downloadVC], animated: true)
     }
 }
