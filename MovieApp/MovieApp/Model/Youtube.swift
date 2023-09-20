@@ -7,5 +7,15 @@
 
 import Foundation
 
-struct Youtube {
+struct Youtube: Codable {
+    let id : VideoElement
+}
+
+struct YoutubeResponse : Codable {
+    let items : [Youtube]
+}
+
+struct VideoElement : Codable {
+    let kind : String
+    let videoId : String
 }
