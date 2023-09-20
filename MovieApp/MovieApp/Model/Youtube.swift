@@ -8,14 +8,14 @@
 import Foundation
 
 struct Youtube: Codable {
-    let id : VideoElement
+    let id: VideoElement
 }
 
-struct YoutubeResponse : Codable {
-    let items : [Youtube]
+struct YoutubeResponse: Codable {
+    let items: [Youtube]
 }
 
-struct VideoElement : Codable {
-    let kind : String
-    let videoId : String
+struct VideoElement: Codable {
+    let kind: String
+    let videoId: String
 }

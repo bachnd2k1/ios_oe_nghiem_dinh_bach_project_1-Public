@@ -26,4 +26,26 @@ class Utils {
             completion(nil)
         }
     }
+    
+    static func convertToMovie(tvShows: [TVShow]) -> [Movie] {
+        let movies = tvShows.map { tvShow in
+            return Movie(
+                adult: nil,
+                backdropPath: nil,
+                genreIDS: [],
+                id: tvShow.id,
+                originalLanguage: nil,
+                originalTitle: tvShow.originalTitle,
+                overview: tvShow.overview,
+                popularity: Constant.Value.zero,
+                posterPath: tvShow.posterPath,
+                releaseDate: nil,
+                title: tvShow.originalName ?? "",
+                video: false,
+                voteAverage: tvShow.voteAverage ?? Constant.Value.zero,
+                voteCount: tvShow.voteCount
+            )
+        }
+        return movies
+    }
 }

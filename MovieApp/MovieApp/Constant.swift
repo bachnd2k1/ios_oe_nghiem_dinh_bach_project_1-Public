@@ -20,6 +20,9 @@ class Constant {
         static let DOWNLOAD = "Download"
         static let SEARCH = "Search"
     }
+    struct Value {
+        static let zero = 0.0
+    }
     struct Space {
         static let widthButton = 100.0
         static let heightHeaderView = 450.0
@@ -42,6 +45,8 @@ class Constant {
     struct Cell {
         static let movie = "MovieCell"
         static let section = "SectionCell"
+        static let header = "HeaderCell"
+        static let table = "TableViewCell"
     }
     enum Sections: Int {
         case trendingMovies = 0
