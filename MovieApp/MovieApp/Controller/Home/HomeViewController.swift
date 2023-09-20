@@ -11,13 +11,12 @@ final class HomeViewController: UIViewController {
     let sectionTitles = [
         "Trending Movies", "Trending TV", "Popular", "Upcoming Movies", "Top Rated"
     ]
-    @IBOutlet weak var previewImageView: UIImageView!
-    @IBOutlet weak var listButton: UIButton!
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var infoButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var heightConstant: NSLayoutConstraint!
+    @IBOutlet private weak var previewImageView: UIImageView!
+    @IBOutlet private weak var listButton: UIButton!
+    @IBOutlet private weak var playButton: UIButton!
+    @IBOutlet private weak var infoButton: UIButton!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var tableView: UITableView!
     private var trendingMovie: Movie?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,16 @@ final class HomeViewController: UIViewController {
         configureHeaderView()
     }
     
-    func configureHeaderView() {
+    @IBAction private func handleListButton(_ sender: Any) {
+    }
+    
+    @IBAction private func handlePlayButton(_ sender: Any) {
+    }
+    
+    @IBAction private func handleInfoButton(_ sender: Any) {
+    }
+    
+    private func configureHeaderView() {
         ApiCaller.shared.getTrendingMovies { [weak self] result in
             switch result {
             case .success(let movies):
@@ -69,7 +77,7 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    func handleAPIResponse(result: Result<[Movie], Error>, cell: SectionCell) {
+    private func handleAPIResponse(result: Result<[Movie], Error>, cell: SectionCell) {
         switch result {
         case .success(let movies):
             cell.configure(with: movies)
@@ -129,5 +137,16 @@ extension HomeViewController: UITableViewDelegate {
         let words = sectionTitle.components(separatedBy: " ")
         let capitalizedWords = words.map { $0.prefix(1).capitalized + $0.dropFirst() }
         header.textLabel?.text = capitalizedWords.joined(separator: " ")
+    }
+}
+
+extension HomeViewController: SectionCellCellDelegate {
+    func showError(error: String) {
+        showAlertError(message: error)
+    }
+    func didTapSectionCell(movie: Movie, youtube: Youtube) {
+        let viewController = DetailViewController()
+        viewController.config(youtube: youtube, movie: movie)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

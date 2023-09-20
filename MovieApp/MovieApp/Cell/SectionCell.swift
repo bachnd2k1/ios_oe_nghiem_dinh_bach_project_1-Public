@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol SectionCellCellDelegate: AnyObject {
+    func didTapSectionCell(movie: Movie, youtube: Youtube)
+    func showError(error: String)
+}
+
 final class SectionCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -16,7 +21,8 @@ final class SectionCell: UITableViewCell {
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: Constant.Cell.movie)
         return collectionView
     }()
-    private var movies: [Movie] = [Movie]()
+    private var movies = [Movie]()
+    weak var delegate: SectionCellCellDelegate?
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(collectionView)
@@ -62,5 +68,25 @@ extension SectionCell: UICollectionViewDataSource {
         guard let posterPath = movies[indexPath.row].posterPath else {return UICollectionViewCell()}
         cell.configure(posterURL: posterPath)
         return cell
+    }
+}
+
+extension SectionCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let title = movies[indexPath.row]
+        guard let titleName = title.originalTitle  else {
+            return
+        }
+        ApiCaller.shared.getVideoYoutube(with: titleName + " trailer") { [weak self] result in
+            switch result {
+            case .success(let youtube):
+                guard let movie = self?.movies[indexPath.row] else {return}
+                self?.delegate?.didTapSectionCell(movie: movie, youtube: youtube)
+            case .failure(let err):
+                let error = "error +\(err)"
+                self?.delegate?.showError(error: error)
+            }
+        }
     }
 }
