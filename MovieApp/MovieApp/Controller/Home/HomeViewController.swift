@@ -11,11 +11,7 @@ final class HomeViewController: UIViewController {
     let sectionTitles = [
         "Trending Movies", "Trending TV", "Popular", "Upcoming Movies", "Top Rated"
     ]
-    @IBOutlet private weak var previewImageView: UIImageView!
-    @IBOutlet private weak var listButton: UIButton!
-    @IBOutlet private weak var playButton: UIButton!
-    @IBOutlet private weak var infoButton: UIButton!
-    @IBOutlet private weak var scrollView: UIScrollView!
+
     @IBOutlet private weak var tableView: UITableView!
     private var trendingMovie: Movie?
     override func viewDidLoad() {
@@ -25,20 +21,11 @@ final class HomeViewController: UIViewController {
         tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
-        configView()
+        let headerView = HeaderView.loadFromNib()
+        tableView.tableHeaderView = headerView
         configureNavBar()
         configureHeaderView()
     }
-    
-    @IBAction private func handleListButton(_ sender: Any) {
-    }
-    
-    @IBAction private func handlePlayButton(_ sender: Any) {
-    }
-    
-    @IBAction private func handleInfoButton(_ sender: Any) {
-    }
-    
     private func configureHeaderView() {
         ApiCaller.shared.getTrendingMovies { [weak self] result in
             switch result {
@@ -51,7 +38,6 @@ final class HomeViewController: UIViewController {
                     guard let self = self else { return }
                     if let image = image {
                         DispatchQueue.main.async {
-                            self.previewImageView.image = image
                         }
                     }
                 }
@@ -60,15 +46,6 @@ final class HomeViewController: UIViewController {
             }
         }
     }
-    private func configView() {
-        let gradientColors = [UIColor.black, UIColor.clear]
-        let startPoint = CGPoint(x: 0.5, y: 1.0)
-        let endPoint = CGPoint(x: 0.5, y: 0.0)
-        previewImageView.addGradient(colors: gradientColors, startPoint: startPoint, endPoint: endPoint)
-        listButton.imageView?.contentMode = .scaleAspectFit
-        infoButton.imageView?.contentMode = .scaleAspectFit
-    }
-    
     private func configureNavBar() {
         let image = UIImage(named: Constant.Image.netflixImage)?.withRenderingMode(.alwaysOriginal)
         let imageView = UIImageView(image: image)
@@ -76,7 +53,6 @@ final class HomeViewController: UIViewController {
         navigationItem.titleView = imageView
         navigationController?.navigationBar.tintColor = .white
     }
-    
     private func handleAPIResponse(result: Result<[Movie], Error>, cell: SectionCell) {
         switch result {
         case .success(let movies):
@@ -105,13 +81,21 @@ extension HomeViewController: UITableViewDataSource {
         case Constant.Sections.trendingMovies.rawValue:
             ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
         case Constant.Sections.trendingTv.rawValue:
-            ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
+            ApiCaller.shared.getTrendingTVs { results in
+                switch results {
+                case .success(let tvShows):
+                    let movies = Utils.convertToMovie(tvShows: tvShows)
+                    cell.configure(with: movies)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         case Constant.Sections.popular.rawValue:
-            ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
+            ApiCaller.shared.getPopularMovies { self.handleAPIResponse(result: $0, cell: cell) }
         case Constant.Sections.upcoming.rawValue:
-            ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
+            ApiCaller.shared.getUpcomingMovie { self.handleAPIResponse(result: $0, cell: cell) }
         case Constant.Sections.topRated.rawValue:
-            ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
+            ApiCaller.shared.getTopRatedMovies { self.handleAPIResponse(result: $0, cell: cell) }
         default:
             return UITableViewCell()
         }
