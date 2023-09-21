@@ -35,6 +35,7 @@ class Constant {
         static let heightForRow = 200.0
         static let heightForSection = 40.0
         static let fontSize = 14.0
+        static let heightOfCell = 370.0
     }
     struct Image {
         static let netflixImage = "netflix"
@@ -45,6 +46,7 @@ class Constant {
     struct Cell {
         static let movie = "MovieCell"
         static let section = "SectionCell"
+        static let comingsoon = "ComingSoonCell"
         static let header = "HeaderCell"
         static let table = "TableViewCell"
     }

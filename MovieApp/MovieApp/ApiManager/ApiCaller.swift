@@ -70,7 +70,7 @@ final class ApiCaller {
         let path = EndPoint.baseURL + EndPoint.queryPopular + Key.apiKey + EndPoint.endPoint
         guard let url = URL(string: path) else {return}
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else  {
+            guard let data = data, error == nil else {
                 return
             }
             do {
@@ -85,7 +85,7 @@ final class ApiCaller {
     
     func getTopRatedMovies(completion: @escaping (Result<[Movie],Error>)->Void){
         let path = EndPoint.baseURL + EndPoint.queryTopRated + Key.apiKey + EndPoint.endPoint
-        guard let url = URL(string :path) else {return}
+        guard let url = URL(string: path) else {return}
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return
