@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComingSoonCell" customModule="MovieApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="458" id="KGk-i7-Jjw" customClass="ComingSoonCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="468"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="468"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lava" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-TO-TFP">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="0u0-Im-r8f"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="217" translatesAutoresizingMaskIntoConstraints="NO" id="XnN-jg-bG8">
+                        <rect key="frame" x="0.0" y="210" width="420" height="38"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming April 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-8w-XgN">
+                                <rect key="frame" x="0.0" y="0.0" width="82" height="14.333333333333334"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g5F-0O-X2i">
+                                <rect key="frame" x="299" y="0.0" width="121" height="38"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppy-tM-rmN">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="38"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="notification"/>
+                                        <connections>
+                                            <action selector="notificationClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bdc-uh-wo9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSm-co-NSr">
+                                        <rect key="frame" x="75" y="0.0" width="46" height="38"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ic_info"/>
+                                        <connections>
+                                            <action selector="infoClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jsX-rE-MKf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEN-zf-f77">
+                        <rect key="frame" x="0.0" y="245" width="420" height="24"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUd-le-41v">
+                        <rect key="frame" x="0.0" y="275" width="420" height="43"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <string key="text">As damaged war veteran John Rambo seeks a tranquil life, the disappearance of his adopted granddaughter unleashes his raw fury for one final mission.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ZUd-le-41v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5Cs-iB-wqi"/>
+                    <constraint firstItem="XnN-jg-bG8" firstAttribute="top" secondItem="BwN-TO-TFP" secondAttribute="bottom" constant="10" id="AxC-k7-bPh"/>
+                    <constraint firstItem="dEN-zf-f77" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="245" id="BZQ-aK-dL7"/>
+                    <constraint firstAttribute="trailing" secondItem="ZUd-le-41v" secondAttribute="trailing" id="Qfx-RT-IXP"/>
+                    <constraint firstAttribute="trailing" secondItem="dEN-zf-f77" secondAttribute="trailing" id="UsU-o9-eEj"/>
+                    <constraint firstAttribute="trailing" secondItem="XnN-jg-bG8" secondAttribute="trailing" id="WWk-DW-mMt"/>
+                    <constraint firstItem="XnN-jg-bG8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Wpx-1w-xix"/>
+                    <constraint firstItem="dEN-zf-f77" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aqC-Bv-AE4"/>
+                    <constraint firstItem="ZUd-le-41v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="275" id="c9C-9l-iZZ"/>
+                    <constraint firstItem="BwN-TO-TFP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="f3G-ip-eca"/>
+                    <constraint firstItem="BwN-TO-TFP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lK8-wp-Y5F"/>
+                    <constraint firstAttribute="trailing" secondItem="BwN-TO-TFP" secondAttribute="trailing" id="s4m-06-Ra5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="9dx-8w-XgN" id="fsY-9U-8ry"/>
+                <outlet property="descriptionLabel" destination="ZUd-le-41v" id="PUj-fA-79A"/>
+                <outlet property="nameLabel" destination="dEN-zf-f77" id="IfU-m0-uAj"/>
+                <outlet property="notificationButton" destination="ppy-tM-rmN" id="FhD-dR-G9B"/>
+                <outlet property="thumbnailImageView" destination="BwN-TO-TFP" id="QYH-3p-gl6"/>
+            </connections>
+            <point key="canvasLocation" x="177.33644859813083" y="156.15550755939526"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_info" width="22" height="22"/>
+        <image name="lava" width="411" height="188"/>
+        <image name="notification" width="22" height="24"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
