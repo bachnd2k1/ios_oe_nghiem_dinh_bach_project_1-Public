@@ -5,19 +5,20 @@
 //  Created by Bach Nghiem on 18/09/2023.
 //
 
+import UIKit
 import Foundation
 
 class Constant {
     struct ViewController {
         static let HOME = HomeViewController()
         static let UPCOMING = UpcomingViewController()
-        static let DOWNLOAD = DownloadViewController()
+        static let FAVOURITE = FavouriteViewController()
         static let SEARCH = SearchViewController()
     }
     struct Title {
         static let HOME = "Home"
         static let UPCOMING = "Upcoming"
-        static let DOWNLOAD = "Download"
+        static let FAVOURITE = "Favourite"
         static let SEARCH = "Search"
     }
     struct Value {
@@ -36,6 +37,8 @@ class Constant {
         static let heightForSection = 40.0
         static let fontSize = 14.0
         static let heightOfCell = 370.0
+        static let heightOfCollectionResult = 200.0
+        static let widthOfCollectionResult = UIScreen.main.bounds.width / 3 - 10
     }
     struct Image {
         static let netflixImage = "netflix"
@@ -49,6 +52,8 @@ class Constant {
         static let comingsoon = "ComingSoonCell"
         static let header = "HeaderCell"
         static let table = "TableViewCell"
+        static let search = "SearchCell"
+        static let topSearch = "TopSearchCell"
     }
     enum Sections: Int {
         case trendingMovies = 0
