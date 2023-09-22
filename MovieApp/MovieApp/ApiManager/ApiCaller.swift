@@ -133,4 +133,22 @@ final class ApiCaller {
         }
         task.resume()
     }
+    
+    func search(with query: String,completion: @escaping (Result<[Movie],Error>) -> Void){
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        guard let url = URL(string: "\(EndPoint.baseURL)/3/search/movie?api_key=\(Key.apiKey)&query=\(query)") else {return}
+        print("url+\(url)")
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            do {
+                let results = try JSONDecoder().decode(MovieResponse.self, from: data)
+                completion(.success(results.results))
+            } catch  {
+                completion(.failure(APIError.failedToGetData))
+            }
+        }
+        task.resume()
+    }
 }
