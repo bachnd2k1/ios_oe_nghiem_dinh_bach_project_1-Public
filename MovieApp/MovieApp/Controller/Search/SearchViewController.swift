@@ -15,7 +15,7 @@ final class SearchViewController: UIViewController {
         controller.searchBar.searchBarStyle = .minimal
         controller.searchBar.searchTextField.backgroundColor = UIColor.lightGray
         return controller
-    } ()
+    }()
     private var movies = [Movie]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let movie = movies[indexPath.row]
         guard let name = movie.originalTitle else {
@@ -97,7 +97,6 @@ extension SearchViewController: UITableViewDelegate {
             }
         }
     }
-
 }
 
 extension SearchViewController: UISearchResultsUpdating, SearchResultsViewControllerDelegate {

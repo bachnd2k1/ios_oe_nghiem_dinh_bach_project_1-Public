@@ -8,7 +8,7 @@
 import Foundation
 
 struct TVShowResponse: Codable {
-    let results : [TVShow]
+    let results: [TVShow]
 }
 
 struct TVShow: Codable {
