@@ -38,6 +38,7 @@ class Constant {
         static let fontSize = 14.0
         static let heightOfCell = 370.0
         static let heightOfCollectionResult = 200.0
+        static let heightOfCellDetail = 480.0
         static let widthOfCollectionResult = UIScreen.main.bounds.width / 3 - 10
     }
     struct Image {
@@ -54,6 +55,10 @@ class Constant {
         static let table = "TableViewCell"
         static let search = "SearchCell"
         static let topSearch = "TopSearchCell"
+        static let banner = "BannerCell"
+        static let interactive = "InteractiveCell"
+        static let actor = "ActorCell"
+        static let actorItem = "ActorItemCell"
     }
     enum Sections: Int {
         case trendingMovies = 0

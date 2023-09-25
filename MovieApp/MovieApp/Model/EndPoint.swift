@@ -24,4 +24,8 @@ struct EndPoint {
                                     + "&include_video=false"
                                     + "&page=1"
                                     + "&with_watch_monetization_types=flatrate"
+    static let baseVideoURL = "https://www.youtube.com/embed/"
+    static let commonEndPoint = "/3/movie/"
+    static let credit = "/credits/"
+    static let endKey = "?api_key="
 }
