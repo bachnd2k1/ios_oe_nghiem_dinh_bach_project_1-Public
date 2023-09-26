@@ -89,7 +89,7 @@ extension SearchViewController: UITableViewDelegate {
             case .success(let youtube):
                 DispatchQueue.main.async {
                     let viewController = DetailViewController()
-                    viewController.config(youtube: youtube, movie: movie)
+                    viewController.config(baseURLVideo: youtube.id.videoId, movie: movie)
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
@@ -102,7 +102,7 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchResultsUpdating, SearchResultsViewControllerDelegate {
     func didTapItem(youtube: Youtube, movie: Movie) {
         let viewController = DetailViewController()
-        viewController.config(youtube: youtube, movie: movie)
+        viewController.config(baseURLVideo: youtube.id.videoId, movie: movie)
         navigationController?.pushViewController(viewController, animated: true)
     }
     func showError(error: String) {

@@ -9,9 +9,10 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    private var youtube: Youtube?
+    private var baseURLVideo: String?
     private var movie: Movie?
     private var movies = [Movie]()
+    private let coreDataRepo = CoreDataRepositoryImpl()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail"
@@ -32,9 +33,9 @@ final class DetailViewController: UIViewController {
         getActorList()
     }
     
-    func config(youtube: Youtube, movie: Movie) {
+    func config(baseURLVideo: String, movie: Movie) {
         self.movie = movie
-        self.youtube = youtube
+        self.baseURLVideo = baseURLVideo
     }
     
     private func getActorList() {
@@ -76,14 +77,18 @@ extension DetailViewController: UITableViewDataSource {
     
     func getBannerCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.banner, for: indexPath) as? ItemBannerTableViewCell else { return UITableViewCell()}
-        if let youtube = youtube, let movie = movie {
-            cell.configCell(youtube: youtube, movie: movie)
+        if let baseURLVideo = baseURLVideo, let movie = movie {
+            cell.configCell(endPointURL: baseURLVideo, movie: movie)
         }
         return cell
     }
     
     func getInteractiveCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.interactive, for: indexPath) as? InteractiveTableViewCell else { return UITableViewCell()}
+        if let name = movie?.title {
+            cell.setName(name: name)
+        }
+        cell.delegate = self
         return cell
     }
     
@@ -91,5 +96,19 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Cell.actor, for: indexPath) as? ActorCollectionViewCell else { return UITableViewCell()}
         cell.configCell(movies: movies)
         return cell
+    }
+}
+
+extension DetailViewController: InteractiveTableViewCellDelegate {
+    func addFavouriteList() {
+        if let baseURLVideo = baseURLVideo, let movie = movie {
+            coreDataRepo.add(movie: movie, baseURLVideo: baseURLVideo)
+        }
+    }
+    
+    func removeFavouriteList() {
+        if let movie = movie {
+            coreDataRepo.remove(name: movie.title)
+        }
     }
 }

@@ -48,4 +48,27 @@ class Utils {
         }
         return movies
     }
+    
+    static func convertCoreDataToMovie(coreData: MovieLocal) -> Movie {
+        return Movie(
+            adult: nil,
+            backdropPath: nil,
+            genreIDS: [],
+            id: getRandomInt(),
+            originalLanguage: nil,
+            originalTitle: coreData.name,
+            overview: coreData.desc,
+            popularity: Constant.Value.zero,
+            posterPath: coreData.urlImage,
+            releaseDate: nil,
+            title: coreData.name ?? "",
+            video: false,
+            voteAverage: Constant.Value.zero,
+            voteCount: 0
+        )
+    }
+    
+    static func getRandomInt() -> Int {
+        return Int.random(in: 0..<100)
+    }
 }

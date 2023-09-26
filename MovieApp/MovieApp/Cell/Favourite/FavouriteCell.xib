@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouriteCell" customModule="MovieApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="FavouriteCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="Svu-jZ-Oaq">
+                        <rect key="frame" x="0.0" y="25" width="150" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="9TP-CY-AmB"/>
+                            <constraint firstAttribute="height" constant="150" id="K9F-13-tHb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Larva Island Movie The Larva Island Movie The Larva Island Movie" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8G-jB-ExF">
+                        <rect key="frame" x="160" y="82" width="300" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Svu-jZ-Oaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="9cV-zy-kvK"/>
+                    <constraint firstItem="Svu-jZ-Oaq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CEn-O7-I1B"/>
+                    <constraint firstAttribute="trailing" secondItem="A8G-jB-ExF" secondAttribute="trailing" constant="20" id="E37-YY-OqQ"/>
+                    <constraint firstItem="A8G-jB-ExF" firstAttribute="leading" secondItem="Svu-jZ-Oaq" secondAttribute="trailing" constant="10" id="TVP-ni-6xF"/>
+                    <constraint firstAttribute="bottom" secondItem="Svu-jZ-Oaq" secondAttribute="bottom" constant="25" id="dyf-QF-6M0"/>
+                    <constraint firstItem="A8G-jB-ExF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lB9-MD-WUB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieImageView" destination="Svu-jZ-Oaq" id="A9n-9H-hGE"/>
+                <outlet property="nameMovie" destination="A8G-jB-ExF" id="yKQ-L3-t6c"/>
+            </connections>
+            <point key="canvasLocation" x="231.8840579710145" y="87.723214285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="test" width="500" height="750"/>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
