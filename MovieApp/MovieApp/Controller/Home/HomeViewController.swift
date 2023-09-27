@@ -26,6 +26,7 @@ final class HomeViewController: UIViewController {
         configureNavBar()
         configureHeaderView()
     }
+    
     private func configureHeaderView() {
         ApiCaller.shared.getTrendingMovies { [weak self] result in
             switch result {
@@ -46,6 +47,7 @@ final class HomeViewController: UIViewController {
             }
         }
     }
+    
     private func configureNavBar() {
         let image = UIImage(named: Constant.Image.netflixImage)?.withRenderingMode(.alwaysOriginal)
         let imageView = UIImageView(image: image)
@@ -60,6 +62,10 @@ final class HomeViewController: UIViewController {
         case .failure(let error):
             showAlertError(message: "error +\(error)")
         }
+    }
+    @objc func refreshData(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
     }
 }
 extension HomeViewController: UITableViewDataSource {
@@ -77,6 +83,7 @@ extension HomeViewController: UITableViewDataSource {
             withIdentifier: Constant.Cell.section, for: indexPath) as? SectionCell else {
             return UITableViewCell()
         }
+        cell.delegate = self
         switch indexPath.section {
         case Constant.Sections.trendingMovies.rawValue:
             ApiCaller.shared.getTrendingMovies { self.handleAPIResponse(result: $0, cell: cell) }
@@ -130,7 +137,7 @@ extension HomeViewController: SectionCellCellDelegate {
     }
     func didTapSectionCell(movie: Movie, youtube: Youtube) {
         let viewController = DetailViewController()
-        viewController.config(youtube: youtube, movie: movie)
+        viewController.config(baseURLVideo: youtube.id.videoId, movie: movie)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

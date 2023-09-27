@@ -28,6 +28,7 @@ final class SectionCell: UITableViewCell {
         contentView.addSubview(collectionView)
         backgroundColor = .black
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.backgroundColor = .black
     }
     required init?(coder: NSCoder) {
@@ -79,13 +80,18 @@ extension SectionCell: UICollectionViewDelegate {
             return
         }
         ApiCaller.shared.getVideoYoutube(with: titleName + " trailer") { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let youtube):
-                guard let movie = self?.movies[indexPath.row] else {return}
-                self?.delegate?.didTapSectionCell(movie: movie, youtube: youtube)
+                guard let movie = self?.movies[indexPath.row] else { return }
+                DispatchQueue.main.async {
+                    self?.delegate?.didTapSectionCell(movie: movie, youtube: youtube)
+                }
             case .failure(let err):
                 let error = "error +\(err)"
-                self?.delegate?.showError(error: error)
+                DispatchQueue.main.async {
+                    self?.delegate?.showError(error: error)
+                }
             }
         }
     }

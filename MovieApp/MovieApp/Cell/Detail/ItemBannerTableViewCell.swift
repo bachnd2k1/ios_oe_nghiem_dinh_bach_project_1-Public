@@ -8,9 +8,6 @@
 import UIKit
 import WebKit
 
-protocol ItemBannerCellDelegate {
-    func seeMoreTapped()
-}
 
 final class ItemBannerTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
@@ -20,15 +17,17 @@ final class ItemBannerTableViewCell: UITableViewCell {
     @IBOutlet private weak var seeMoreButton: UIButton!
     @IBOutlet private weak var desciptionLabel: UILabel!
     private var webView: WKWebView!
-    private var youtube: Youtube?
     private var movie: Movie?
-    var delegate: ItemBannerCellDelegate?
+    private var isExpanded = false
+    private var baseURLVideo: String?
     
     @IBAction private func handlePlayButton(_ sender: Any) {
 
     }
     @IBAction private func handleSeeMoreButton(_ sender: Any) {
-        delegate?.seeMoreTapped()
+        isExpanded.toggle()
+        desciptionLabel.numberOfLines = isExpanded ? 0 : 2
+        seeMoreButton.isHidden = isExpanded
     }
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,13 +35,15 @@ final class ItemBannerTableViewCell: UITableViewCell {
         configUICell()
     }
     
-    func configCell(youtube: Youtube, movie: Movie) {
+    func configCell(endPointURL: String, movie: Movie) {
         self.movie = movie
-        self.youtube = youtube
-        guard let url = URL(string: EndPoint.baseVideoURL + youtube.id.videoId) else {return}
+        let path = EndPoint.baseVideoURL + endPointURL
+        self.baseURLVideo = path
+        guard let url = URL(string:path) else {return}
         webView.load(URLRequest(url: url))
         titleLabel.text = movie.title
         dateLabel.text = movie.releaseDate
+        desciptionLabel.text = movie.overview
     }
     
     private func configView() {

@@ -51,7 +51,7 @@ extension UpcomingViewController: UITableViewDelegate {
             case .success(let youtube):
                 DispatchQueue.main.async {
                     let viewController = DetailViewController()
-                    viewController.config(youtube: youtube, movie: movie)
+                    viewController.config(baseURLVideo: youtube.id.videoId, movie: movie)
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 }
             case .failure(let error):
@@ -83,27 +83,33 @@ extension UpcomingViewController: UITableViewDataSource {
 extension UpcomingViewController: ComingSoonCellDelegate {
     func openDetailVC(movie: Movie, youtube: Youtube) {
         let detailVC = DetailViewController()
-        detailVC.config(youtube: youtube, movie: movie)
+        detailVC.config(baseURLVideo: youtube.id.videoId, movie: movie)
         navigationController?.pushViewController(detailVC, animated: true)
     }
-
+    
     func notification(movie: Movie) {
-        guard let releaseDate = movie.releaseDate else { return }
-        let alert = UIAlertController(title: "Set a reminder on \(releaseDate)?", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-            guard self != nil else { return }
-            let content = UNMutableNotificationContent()
-            content.title = "Movie Release!!"
-            content.body = "\(String(describing: movie.originalTitle)) is coming today!"
-            content.sound = UNNotificationSound.default
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-            let request = UNNotificationRequest(identifier: "RemindMeIdentifier", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                guard let title = movie.originalTitle else { return }
+                let content = UNMutableNotificationContent()
+                content.title = "Movie Release!!"
+                content.body = "\(title) is coming today!"
+                content.sound = UNNotificationSound.default
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let request = UNNotificationRequest(identifier: "myNotification", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { [self] error in
+                    if let error = error {
+                        self.showError(error: "Error scheduling notification: \(error)")
+                    } else {
+                        self.showError(error: "Notification scheduled successfully")
+                    }
+                }
+            } else {
+                self.showError(error: "Notification permission denied")
+            }
+        }
     }
-
+    
     func showError(error: String) {
         showAlertError(message: error)
     }
