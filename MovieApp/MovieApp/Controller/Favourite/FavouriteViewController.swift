@@ -8,9 +8,9 @@
 import UIKit
 
 final class FavouriteViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     let coreDataRepo = CoreDataRepositoryImpl()
-    private var myListArray = [MovieLocal]()
+    var myListArray = [MovieLocal]()
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
@@ -21,7 +21,7 @@ final class FavouriteViewController: UIViewController {
         fetchDataFromCoreData()
     }
     
-    private func config() {
+    func config() {
         title = "MyList"
         view.backgroundColor = .black
         if let navigationController = navigationController {
@@ -35,7 +35,7 @@ final class FavouriteViewController: UIViewController {
         tableView.backgroundColor = .black
     }
     
-    private func fetchDataFromCoreData() {
+    func fetchDataFromCoreData() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let self = self else { return }
             self.myListArray = self.coreDataRepo.getAll()

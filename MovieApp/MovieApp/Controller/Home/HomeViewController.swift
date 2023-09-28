@@ -12,7 +12,7 @@ final class HomeViewController: UIViewController {
         "Trending Movies", "Trending TV", "Popular", "Upcoming Movies", "Top Rated"
     ]
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     private var trendingMovie: Movie?
     override func viewDidLoad() {
         super.viewDidLoad()

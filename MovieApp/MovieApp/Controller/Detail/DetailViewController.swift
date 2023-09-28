@@ -8,10 +8,10 @@
 import UIKit
 
 final class DetailViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     private var baseURLVideo: String?
-    private var movie: Movie?
-    private var movies = [Movie]()
+    var movie: Movie?
+    var movies = [Movie]()
     private let coreDataRepo = CoreDataRepositoryImpl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ final class DetailViewController: UIViewController {
         self.baseURLVideo = baseURLVideo
     }
     
-    private func getActorList() {
+    func getActorList() {
         ApiCaller.shared.getUpcomingMovie { [weak self] results in
             guard let self = self else { return } 
             switch results {

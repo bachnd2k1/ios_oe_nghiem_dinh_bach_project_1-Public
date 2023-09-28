@@ -8,8 +8,8 @@
 import UIKit
 
 final class UpcomingViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
-    private var movies = [Movie]()
+    @IBOutlet weak var tableView: UITableView!
+    var movies = [Movie]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -24,7 +24,7 @@ final class UpcomingViewController: UIViewController {
         tableView.dataSource = self
         fetchUpcoming()
     }
-    private func fetchUpcoming() {
+    func fetchUpcoming() {
         ApiCaller.shared.getUpcomingMovie { [weak self] results in
             switch results {
             case .success(let movies):
@@ -95,7 +95,7 @@ extension UpcomingViewController: ComingSoonCellDelegate {
                 content.title = "Movie Release!!"
                 content.body = "\(title) is coming today!"
                 content.sound = UNNotificationSound.default
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
                 let request = UNNotificationRequest(identifier: "myNotification", content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request) { [self] error in
                     if let error = error {
